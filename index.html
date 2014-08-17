@@ -6,40 +6,108 @@
 	</head>
 	<body>
 		<div id="Header">
+			<h1>Virtual Dominant</h1>
 		</div>
+		<NOSCRIPT>
+			Please enable javascript to use this page. If you do not, you will not be able to use this site AT ALL!
+		</NOSCRIPT>
+		
+		<!-- Delete this when done -->
+		Please do not use this site and expect it to work, there is still work to do and most things won't work the way you expect them too (if at all). That being said, enjoy taking a look around so you can get a feel for how it's coming along. <br>
+		<br>
+		
 		<div id="Content">
-			<NOSCRIPT>
-				Please enable javascript to use this page. If you do not, you will not be able to 
-			</NOSCRIPT>
 			<div id="start">
-				You must be over 18 to view the contents of this page.<br>
+				You must be over 18, or 21, to view the contents of this page. Please make sure that you are of legal age to view adult material.<br>
+				<br>
+				Some themes on this site may be disturbing to some individuals, and individuals who are easily offended by content of a sexual nature should not enter this site. <br>
+				<br>
+				Please also note that this page WILL NOT be shown again after completing the first page of preferences until a major update comes out, in which case you will have to redo your preferences <br>
 				<br>
 				<button onClick="load('setup_1')">Enter</button><button onClick="window.location.href='http://google.com/'">Exit</a>
 			</div>
 			<div id="setup_1">
 				<b>Submissives info</b> <br>
+				<br>
 				Chosen name <br>
 				<input id="prefs_sub_name"> <br>
+				<br>
 				Gender <br>
 				<input name="gender1" value="Male" type="radio"> Male <input name="gender1" value="Female" type="radio"> Female <br>
-				Age <br>
-				<input id="prefs_sub_age"> <br>
+				<br>
 				<button onClick="savePrefs('sub_gen');">Continue</button>
 			</div>
 			<div id="setup_2">
 				<b>Dominant's info</b> <br>
+				<br>
 				Name <br>
 				<input id="prefs_dom_name"> <br>
+				<br>
 				Gender <br>
 				<input name="gender2" value="Male" type="radio"> Male <input name="gender2" value="Female" type="radio"> Female <br>
+				<br>
+				Age <br>
+				<input id="prefs_dom_age"> <br>
+				<br>
+				Strictness <br>
+				<i>This will effect how easily your dom forgives you after making a mistake, or not completing a task.</i> <br>
+				<input type="radio" name="prefs_dom_strict" value="0"> Not strict
+				<input type="radio" name="prefs_dom_strict" value="1"> Lenient 
+				<input type="radio" name="prefs_dom_strict" value="2"> Average
+				<input type="radio" name="prefs_dom_strict" value="3"> Strict
+				<input type="radio" name="prefs_dom_strict" value="4"> Harsh <br>
+				<br>
+				Fetishes <br>
+				<i>This will effect what your dominant has you do most often.</i> <br>
+				<input type="radio" name="prefs_dom_fetish" value="Feet"> Feet
+				<input type="radio" name="prefs_dom_fetish" value="TAndD"> Tease & denial
+				<input type="radio" name="prefs_dom_fetish" value="Humiliation"> Humiliation <br>
+				<br>
 				<button onClick="savePrefs('top_gen');">Continue</button>
 			</div>
 			<div id="setup_3">
-				<b>Toys</b> <br>
+				<b>Toys and items</b> <br>
+				<br>
+				<b><i>Anal/Vaginal</i></b> <br>
+				<input type="checkbox" id="toy_anal_smlButtPlug"> Small butt plug <br>
+				<input type="checkbox" id="toy_anal_medButtPlug"> Medium butt plug <br>
+				<input type="checkbox" id="toy_anal_lrgButtPlug"> Large butt plug <br>
+				<input type="checkbox" id="toy_anal_infButtPlug"> Inflatable butt plug <br>
+				<input type="checkbox" id="toy_anal_vibButtPlug"> Vibrating butt plug <br>
+				<input type="checkbox" id="toy_anal_smlDildo"> Small dildo <br>
+				<input type="checkbox" id="toy_anal_medDildo"> Medium dildo <br>
+				<input type="checkbox" id="toy_anal_lrgDildo"> Large dildo <br>
+				<input type="checkbox" id="toy_anal_vibDildo"> Vibrating dildo <br>
+				<input type="checkbox" id="toy_anal_vibe"> Vibrator <br>
+				<br>
+				<b><i>Clamps</i></b> <br>
+				<input type="checkbox" id="toy_clamp_clothesPeg"> Clothes Pegs <br>
+				<input type="checkbox" id="toy_clamp_tweezer"> Tweezer clamps <br>
+				<input type="checkbox" id="toy_clamp_clover"> Clover clamps <br>
+				<input type="checkbox" id="toy_clamp_bullDog"> Bulldog clip clamps <br>
+				<br>
+				<b><i>Bondage</i></b> <br>
+				<input type="checkbox" id="toy_bound_blindfold"> Blindfold <br>
+				<input type="checkbox" id="toy_bound_collar"> Collar <br>
+				<br>
+				<b><i>Male Clothes</i></b> <br>
+				<input type="checkbox" id="toy_mClothes_underwear"> Boxer shorts <br>
+				<input type="checkbox" id="toy_mClothes_trousers"> Trousers <br>
+				<input type="checkbox" id="toy_mClothes_suit"> Suit <br>
+				<br>
+				<b><i>Female Clothes</i></b> <br>
+				<input type="checkbox" id="toy_fClothes_panties"> Panties <br>
+				<input type="checkbox" id="toy_fClothes_bra"> Bra <br>
+				<input type="checkbox" id="toy_fClothes_skirt"> Skirt <br>
+				<input type="checkbox" id="toy_fClothes_blouse"> Blouse <br>
+				<input type="checkbox" id="toy_fClothes_dress"> Dress <br>
+				<input type="checkbox" id="toy_fClothes_highHeels"> High heels <br>
+				<br>
 				<button onClick="savePrefs('toys');">Continue</button>
 			</div>
 			<div id="setup_4">
 				<b>Limits</b> <br>
+				<br>
 				<button onClick="savePrefs('limits');">Continue</button>
 			</div>
 			<div id="ground_rules">
@@ -52,15 +120,19 @@
 				When you're at work I won't give you any tasks and will be more lenient in my permission giving, but you must still request my permission. <br>
 				If you disobey an instruction or cannot complete it, you must confess. <br>
 				<br>
-				<button onClick="load('main')">Understood</button>
+				<button onClick="savePrefs('rules')">Understood</button>
 			</div>
 			<div id="main">
 				<div id="current_instruction">
-					Current Instruction here
+					Current Instruction here <br>
 				</div>
-				<b>Questions</b>
-				<div id="sect_questions">
+				<br>
+				<a onClick="$('#sect_questions').toggle();"><b>Questions</b></a><br>
+				<div class="hidden" id="sect_questions">
 					<a onClick="question('GRules');">What are the ground rules?</a> <br>
+					<a onClick="question('updateItems');">Can I update my items?</a> <br>
+					<a onClick="question('updateLimits');">Can I update my limits?</a> <br>
+					<a onClick="question('updatePrefs');">Can I change my details?</a> <br>
 					<a onClick="question('Pee');">Can I go pee? </a><br>
 					<a onClick="question('Shit');">Can I go shit? </a><br>
 					<a onClick="question('Wank');">Can I masturbate? </a><br>
@@ -68,16 +140,19 @@
 					<a onClick="question('Orgasm');">Can I have a full orgasm? </a><br>
 					<a onClick="question('Serve');">Can I serve you? </a><br>
 					<a onClick="question('Sleep');">Can I sleep? </a><br>
+					<a onClick="question('resetAll');">Can I reset all of this?</a> <br>
 				</div>
-				<b>Confessions</b>
-				<div id="sect_confessions">
+				<br>
+				<a onClick="$('#sect_confessions').toggle();"><b>Confessions</b></a><br>
+				<div class="hidden" id="sect_confessions">
 					<a onClick="confession('cum');">I have cum without permission </a><br>
 					<a onClick="confession('wank');">I have masturbated without permission </a><br>
 					<a onClick="confession('task');">I have not completed one of your tasks </a><br>
 					<a onClick="confession('rules');">I did not follow the ground rules set out for me </a><br>
 				</div>
-				<b>Locations</b>
-				<div id="sect_locations">
+				<br>
+				<a onClick="$('#sect_locations').toggle();"><b>Locations</b></a> <br>
+				<div class="hidden" id="sect_locations">
 					<a onClick="locations('home');">I am at home </a><br>
 					<a onClick="locations('work');">I am at work </a><br>
 					<a onClick="locations('safe');">I am in a safe place </a><br>
@@ -98,22 +173,42 @@
 		body {
 			text-align: center;
 		}
+		#Content {
+			display: none;
+		}
+		.hidden {
+			display: none;
+		}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
 		// Current version
-		var version = "0.0.1a";
-		// See if prefs are set for current version
-		if ( localStorage.version == version ) {
-			// Preferences set successfully for current version
-			load( 'main' );
-		}
-		else {
-			// Go to to start page
-			load( 'start' );
-		}
+		var version = "0.0.2a";
 		
+		function start () {
+			// checks users progress and version info
+			if ( localStorage.version == version ) {
+				if ( localStorage.progress == "complete" ) {
+					// Preferences set successfully for current version
+					load( 'main' );
+				} else if ( localStorage.progress == "rules" ) {
+					load( 'ground_rules' );
+				} else if ( localStorage.progress == "setup_4" ) {
+					load( 'setup_4' );
+				} else if ( localStorage.progress == "setup_3" ) {
+					load( 'setup_3' );
+				} else if ( localStorage.progress == "setup_2" ) {
+					load( 'setup_2' );
+				} else {
+					load( 'start' );
+				}
+			} else {
+				// Go to to start page
+				load( 'start' );
+			}
+		}
 		function load ( div ) {
+			$('#Content').show();
 			$('#start').hide();
 			$('#setup_1').hide();
 			$('#setup_2').hide();
@@ -150,29 +245,39 @@
 		}
 		function savePrefs ( section ) {
 			if ( section == "sub_gen" ) {
+				localStorage.version = version;
 				// Checks sub's gender
-				if ( document.getElementsByName('gender1')[0].checked ) {
+				if ( $('[name=gender1]')[0].checked ) {
 					// sub's gender's male
 					localStorage.sub_gender = "m";
-				} else if ( document.getElementsByName('gender1')[1].checked ) {
+				} else if ( $('[name=gender1]')[1].checked ) {
 					// sub is female
 					localStorage.sub_gender = "f";
 				} else { return; }
 				// Checks sub's name
-				if ( document.getElementById('prefs_sub_name').value != "" ) {
-					localStorage.sub_name = document.getElementById('prefs_sub_name').value;
+				if ( $('#prefs_sub_name').value != "" ) {
+					localStorage.sub_name = $('#prefs_sub_name').value;
 				} else { return; }
-				
+				localStorage.progress = "setup_2";
 				load('setup_2');
 			}
 			else if ( section == "top_gen" ) {
+				//	$('[name=prefs_dom_strict]:checked').length; 	If 0 none checked
+				//	$('[name=prefs_dom_strict]:checked')[0].value;	Gets value of checked box
+				localStorage.progress = "setup_3"
 				load('setup_3');
 			}
 			else if ( section == "toys" ) {
+				localStorage.progress = "setup_3";
 				load('setup_4')
 			}
 			else if ( section == "limits" ) {
+				localStorage.progress = "rules";
 				load('ground_rules')
+			}
+			else if ( section == 'rules' ) {
+				localStorage.progress = "complete";
+				load('main');
 			}
 		}
 		function question ( q ) {
@@ -184,6 +289,8 @@
 		function locations ( loc ) {
 			console.log( "location: " + loc );
 		}
+		
+		start();
 		
 	</script>
 </html>
