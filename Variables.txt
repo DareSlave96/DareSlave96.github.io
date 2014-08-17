@@ -1,0 +1,43 @@
+Variable
+
+pnts_orgasm				Raises by one every 10 strokes or every hour. Starts with 10.
+pnts_pee				Raises by 5 every half hour, starts with 50.
+pnts_shit				Raises by 5 every half hour, starts with 50.
+
+impulse_anal			Raises by 1-5 every 10 minutes.
+impulse_humiliation		Raises by 1-5 every 10 minutes.
+impulse_kindness		Raises by 1-3 every 10 minutes.
+impulse_crossDressing	Raises by 1-5 every 10 minutes.
+impulse_pain			Raises by 1-5 every 10 minutes.
+
+
+
+Action
+
+Sleep			Must be after 9 PM, must wake up before 7AM next day. 
+Pee				Loses 25 'pnts_pee' and has following thresholds:-
+					Home:			75 points
+					Work:			40 points
+					Out:			25 points
+					Safe&noLimit	75 points
+					Safe&limit		40 points
+Shit			Loses 40 'pnts_shit' and has following thresholds:-
+					Home&noLimit	100 points
+					Home&limit		50 points
+					Work			40 points
+					Out				40 points
+					Safe&noLimit	90 points
+					Safe&limit		50 points
+Masturbate		Loses 5 'pnts_orgasm' per minute
+Edge			Loses 10 'pnts_orgasm'
+Ruin orgasm		Loses 25 'pnts_orgasm'
+Full orgasm 	Loses 50 'pnts_orgasm'
+
+
+
+Confessions
+
+Cum				Lose 100 'pnts_orgasm'
+Wanked			Lose 50 'pnts_orgasm'
+FailTask		Lose 10 of all points
+FailGroundRule	Lose 25 of all points

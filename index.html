@@ -133,11 +133,11 @@
 					<a onClick="question('Pee');">Can I go pee? </a><br>
 					<a onClick="question('Shit');">Can I go shit? </a><br>
 					<a onClick="question('Wank');">Can I masturbate? </a><br>
+					<a onClick="question('Edge');">Can I edge? </a><br>
 					<a onClick="question('Ruin');">Can I ruin my orgasm? </a><br>
 					<a onClick="question('Orgasm');">Can I have a full orgasm? </a><br>
 					<a onClick="question('Serve');">Can I serve you? </a><br>
 					<a onClick="question('Sleep');">Can I sleep? </a><br>
-					<a onClick="question('resetAll');">Can I reset all of this?</a> <br>
 				</div>
 				<br>
 				<a onClick="$('#sect_confessions').toggle();"><b>Confessions</b></a><br>
@@ -160,6 +160,7 @@
 				<div class="hidden" id="sect_prefs">
 					<a onClick="question('updateItems');">Can I update my items?</a> <br>
 					<a onClick="question('updateLimits');">Can I update my limits?</a> <br>
+					<a onClick="question('resetAll');">Can I reset all of this?</a> <br>
 					<a onClick="question('updatePrefs');">Can I change my details?</a> <br>
 				</div>
 			</div>
@@ -190,6 +191,7 @@
 		var version = "0.0.2a";
 		// Other variables
 		var singleTime = false;
+		var timeX10 = 0;
 		
 		function start () {
 			// checks users progress and version info
@@ -267,7 +269,7 @@
 				if ( !singleTime ){
 					localStorage.progress = "setup_2";
 					load('setup_2');
-				} else { load('main'); }
+				} else { singleTime = false; load('main'); }
 			}
 			else if ( section == "top_gen" ) {
 				//	$('[name=prefs_dom_strict]:checked').length; 	If 0 none checked
@@ -275,19 +277,22 @@
 				if ( !singleTime ){
 					localStorage.progress = "setup_3"
 					load('setup_3');
-				} else { load('main'); }
+				} else { singleTime = false; load('main'); }
 			}
 			else if ( section == "toys" ) {
 				if ( !singleTime ){
 					localStorage.progress = "setup_4";
 					load('setup_4');
-				} else { load('main'); }
+				} else { singleTime = false; load('main'); }
 			}
 			else if ( section == "limits" ) {
 				if ( !singleTime ){
 					localStorage.progress = "rules";
+					localStorage.pnts_pee = 50;
+					localStorage.pnts_orgasm = 10;
+					localStorage.pnts_shit = 50;
 					load('ground_rules');
-				} else { load('main'); }
+				} else { singleTime = false; load('main'); }
 			}
 			else if ( section == 'rules' ) {
 				localStorage.progress = "complete";
@@ -296,6 +301,42 @@
 		}
 		function question ( q ) {
 			console.log( "question: " + q );
+			if ( q == "GRules" ) {
+				// What are the ground rules
+			} else if ( q == "Pee" ) {
+				// Can I go pee?
+				
+			} else if ( q == "Shit" ) {
+				// Can I shit?
+			} else if ( q == "Wank" ) {
+				// Can I masturbate?
+			} else if ( q == "Edge" ) {
+				// Can I edge?
+			} else if ( q == "Ruin" ) {
+				// Can I have a ruined orgasm?
+			} else if ( q == "Orgasm" ) {
+				// Can I have a full orgasm?
+			} else if ( q == "Serve" ) {
+				// Can I serve/play with you?
+			} else if ( q == "Sleep" ) {
+				// Can I go to sleep?
+			} else if ( q == "resetAll" ) {
+				// Can I reset everything?
+				localStorage.version = "none";
+				load('start');
+			} else if ( q == "updateItems" ) {
+				// Update items
+				singleTime = true;
+				load('setup_3');
+			} else if ( q == "updateLimits" ) {
+				// Update limits
+				singleTime = true;
+				load('setup_4');
+			} else if ( q == "updatePrefs" ) {
+				// Update sub's preferences
+				singleTime = true;
+				load('setup_1');
+			} else { console.log("Something went wrong"); }
 		}
 		function confession ( confession ) {
 			console.log( "confess: " + confession );
@@ -303,6 +344,32 @@
 		function locations ( loc ) {
 			console.log( "location: " + loc );
 		}
+		function regular () {
+			console.log("timing event");
+			timeX10++;
+			if ( timeX10 % 3 ) {
+				// Do stuff for 30 minute intervals
+				localStorage.pnts_pee += 5;
+				localStorage.pnts_shit += 5;
+			}
+			if ( timeX10 % 1 ) {
+				// Do stuff for 10 minute intervals
+				localStorage.impulse_anal += rand( 1, 5 );
+				localStorage.impulse_humiliation += rand( 1, 5 );
+				localStorage.impulse_kindness += rand( 1, 3 );
+				localStorage.impulse_crossDressing += rand( 1, 5 );
+				localStorage.impulse_pain += rand( 1, 5 );
+			}
+			if ( timeX10 % 6 ) {
+				// Do stuff for 60 minute intervals
+				localStorage.pnts_orgasm ++;
+			}
+		}
+		function rand ( min, max ){
+			return Math.floor( ( Math.random() * ( max - min + 1 ) ) + min );
+		}
+		// Sets timing events
+		window.setInterval( regular(), 1000*60*10 ); 	// Ten minutes
 		
 		start();
 		
