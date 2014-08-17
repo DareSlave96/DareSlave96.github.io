@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Virtual Dominant</title>
+	</head>
+	<body>
+		<div id="Header">
+		</div>
+		<div id="Content">
+			<NOSCRIPT>
+				Please enable javascript to use this page. If you do not, you will not be able to 
+			</NOSCRIPT>
+			<div id="start">
+				You must be over 18 to view the contents of this page.<br>
+				<br>
+				<button onClick="load('setup_1')">Enter</button><button onClick="window.location.href='http://google.com/'">Exit</a>
+			</div>
+			<div id="setup_1">
+				<b>Submissives info</b> <br>
+				Chosen name <br>
+				<input id="prefs_sub_name"> <br>
+				Gender <br>
+				<input name="gender1" value="Male" type="radio"> Male <input name="gender1" value="Female" type="radio"> Female <br>
+				Age <br>
+				<input id="prefs_sub_age"> <br>
+				<button onClick="savePrefs('sub_gen');">Continue</button>
+			</div>
+			<div id="setup_2">
+				<b>Dominant's info</b> <br>
+				Name <br>
+				<input id="prefs_dom_name"> <br>
+				Gender <br>
+				<input name="gender2" value="Male" type="radio"> Male <input name="gender2" value="Female" type="radio"> Female <br>
+				<button onClick="savePrefs('top_gen');">Continue</button>
+			</div>
+			<div id="setup_3">
+				<b>Toys</b> <br>
+				<button onClick="savePrefs('toys');">Continue</button>
+			</div>
+			<div id="setup_4">
+				<b>Limits</b> <br>
+				<button onClick="savePrefs('limits');">Continue</button>
+			</div>
+			<div id="ground_rules">
+				Ok, so if you want to serve me there have to be some ground rules. So the full list is below. <br>
+				<br>
+				Do as I say unless it's dangerous or illegal, you chose your limits now live by them. <br>
+				When leaving the house or arriving at a location, remember to tell me. <br>
+				When you're out and about I will not ask you to do anything TOO risky, even if obvious public isn't a limit. <br>
+				You must request permission to pee, shit, sleep and do any type of sexual activity. <br>
+				When you're at work I won't give you any tasks and will be more lenient in my permission giving, but you must still request my permission. <br>
+				If you disobey an instruction or cannot complete it, you must confess. <br>
+				<br>
+				<button onClick="load('main')">Understood</button>
+			</div>
+			<div id="main">
+				<div id="current_instruction">
+					Current Instruction here
+				</div>
+				<b>Questions</b>
+				<div id="sect_questions">
+					<a onClick="question('GRules');">What are the ground rules?</a> <br>
+					<a onClick="question('Pee');">Can I go pee? </a><br>
+					<a onClick="question('Shit');">Can I go shit? </a><br>
+					<a onClick="question('Wank');">Can I masturbate? </a><br>
+					<a onClick="question('Ruin');">Can I ruin my orgasm? </a><br>
+					<a onClick="question('Orgasm');">Can I have a full orgasm? </a><br>
+					<a onClick="question('Serve');">Can I serve you? </a><br>
+					<a onClick="question('Sleep');">Can I sleep? </a><br>
+				</div>
+				<b>Confessions</b>
+				<div id="sect_confessions">
+					<a onClick="confession('cum');">I have cum without permission </a><br>
+					<a onClick="confession('wank');">I have masturbated without permission </a><br>
+					<a onClick="confession('task');">I have not completed one of your tasks </a><br>
+					<a onClick="confession('rules');">I did not follow the ground rules set out for me </a><br>
+				</div>
+				<b>Locations</b>
+				<div id="sect_locations">
+					<a onClick="locations('home');">I am at home </a><br>
+					<a onClick="locations('work');">I am at work </a><br>
+					<a onClick="locations('safe');">I am in a safe place </a><br>
+					<a onClick="locations('out');">I am going out </a><br>
+				</div>
+			</div>
+			<div id="error">
+				We're sorry, we've encountered an error.
+			</div>
+		</div>
+		<div id="Footer">
+		</div>
+	</body>
+	<style>
+		button {
+			width: 100px;
+		}
+		body {
+			text-align: center;
+		}
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+		// Current version
+		var version = "0.0.1a";
+		// See if prefs are set for current version
+		if ( localStorage.version == version ) {
+			// Preferences set successfully for current version
+			load( 'main' );
+		}
+		else {
+			// Go to to start page
+			load( 'start' );
+		}
+		
+		function load ( div ) {
+			$('#start').hide();
+			$('#setup_1').hide();
+			$('#setup_2').hide();
+			$('#setup_3').hide();
+			$('#setup_4').hide();
+			$('#ground_rules').hide();
+			$('#main').hide();
+			$('#error').hide();
+			
+			if ( div == 'main' ) {
+				$('#main').show();
+			}
+			else if ( div == 'start' ) {
+				$('#start').show();
+			}
+			else if ( div == 'setup_1' ) {
+				$('#setup_1').show();
+			}
+			else if ( div == 'setup_2' ) {
+				$('#setup_2').show();
+			}
+			else if ( div == 'setup_3' ) {
+				$('#setup_3').show();
+			}
+			else if ( div == 'setup_4' ) {
+				$('#setup_4').show();
+			}
+			else if ( div == 'GRules' || div == 'ground_rules' ) {
+				$('#ground_rules').show();
+			}
+			else {
+				$('#error').show();
+			}
+		}
+		function savePrefs ( section ) {
+			if ( section == "sub_gen" ) {
+				// Checks sub's gender
+				if ( document.getElementsByName('gender1')[0].checked ) {
+					// sub's gender's male
+					localStorage.sub_gender = "m";
+				} else if ( document.getElementsByName('gender1')[1].checked ) {
+					// sub is female
+					localStorage.sub_gender = "f";
+				} else { return; }
+				// Checks sub's name
+				if ( document.getElementById('prefs_sub_name').value != "" ) {
+					localStorage.sub_name = document.getElementById('prefs_sub_name').value;
+				} else { return; }
+				
+				load('setup_2');
+			}
+			else if ( section == "top_gen" ) {
+				load('setup_3');
+			}
+			else if ( section == "toys" ) {
+				load('setup_4')
+			}
+			else if ( section == "limits" ) {
+				load('ground_rules')
+			}
+		}
+		function question ( q ) {
+			console.log( "question: " + q );
+		}
+		function confession ( confession ) {
+			console.log( "confess: " + confession );
+		}
+		function locations ( loc ) {
+			console.log( "location: " + loc );
+		}
+		
+	</script>
+</html>
