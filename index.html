@@ -130,9 +130,6 @@
 				<a onClick="$('#sect_questions').toggle();"><b>Questions</b></a><br>
 				<div class="hidden" id="sect_questions">
 					<a onClick="question('GRules');">What are the ground rules?</a> <br>
-					<a onClick="question('updateItems');">Can I update my items?</a> <br>
-					<a onClick="question('updateLimits');">Can I update my limits?</a> <br>
-					<a onClick="question('updatePrefs');">Can I change my details?</a> <br>
 					<a onClick="question('Pee');">Can I go pee? </a><br>
 					<a onClick="question('Shit');">Can I go shit? </a><br>
 					<a onClick="question('Wank');">Can I masturbate? </a><br>
@@ -157,6 +154,13 @@
 					<a onClick="locations('work');">I am at work </a><br>
 					<a onClick="locations('safe');">I am in a safe place </a><br>
 					<a onClick="locations('out');">I am going out </a><br>
+				</div>
+				<br>
+				<a onClick="$('#sect_prefs').toggle();"><b>Preferences</b></a> <br>
+				<div class="hidden" id="sect_prefs">
+					<a onClick="question('updateItems');">Can I update my items?</a> <br>
+					<a onClick="question('updateLimits');">Can I update my limits?</a> <br>
+					<a onClick="question('updatePrefs');">Can I change my details?</a> <br>
 				</div>
 			</div>
 			<div id="error">
@@ -184,6 +188,8 @@
 	<script>
 		// Current version
 		var version = "0.0.2a";
+		// Other variables
+		var singleTime = false;
 		
 		function start () {
 			// checks users progress and version info
@@ -258,22 +264,30 @@
 				if ( $('#prefs_sub_name').value != "" ) {
 					localStorage.sub_name = $('#prefs_sub_name').value;
 				} else { return; }
-				localStorage.progress = "setup_2";
-				load('setup_2');
+				if ( !singleTime ){
+					localStorage.progress = "setup_2";
+					load('setup_2');
+				} else { load('main'); }
 			}
 			else if ( section == "top_gen" ) {
 				//	$('[name=prefs_dom_strict]:checked').length; 	If 0 none checked
 				//	$('[name=prefs_dom_strict]:checked')[0].value;	Gets value of checked box
-				localStorage.progress = "setup_3"
-				load('setup_3');
+				if ( !singleTime ){
+					localStorage.progress = "setup_3"
+					load('setup_3');
+				} else { load('main'); }
 			}
 			else if ( section == "toys" ) {
-				localStorage.progress = "setup_3";
-				load('setup_4')
+				if ( !singleTime ){
+					localStorage.progress = "setup_4";
+					load('setup_4');
+				} else { load('main'); }
 			}
 			else if ( section == "limits" ) {
-				localStorage.progress = "rules";
-				load('ground_rules')
+				if ( !singleTime ){
+					localStorage.progress = "rules";
+					load('ground_rules');
+				} else { load('main'); }
 			}
 			else if ( section == 'rules' ) {
 				localStorage.progress = "complete";
